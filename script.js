@@ -1,17 +1,76 @@
 // Tracking de clicks en botones CTA
-// Reemplazar 'GA_MEASUREMENT_ID' con el ID real de Google Analytics 4
-
 function trackCTAClick(location) {
-  // GA4 — descomentar cuando esté configurado el ID real
-  // if (typeof gtag === 'function') {
-  //   gtag('event', 'cta_click', {
-  //     event_category: 'conversion',
-  //     event_label: location,
-  //   });
-  // }
+  // Meta Pixel — InitiateCheckout (click en botón de compra)
+  if (typeof fbq === 'function') {
+    fbq('track', 'InitiateCheckout', {
+      value: 7.00,
+      currency: 'USD',
+      content_name: 'Odontología desde la panza',
+      content_type: 'product',
+    });
+  }
 
-  // Log en desarrollo
   console.log('[CTA click]', location);
+}
+
+// Checkout MercadoPago — crea la preferencia de pago y redirige
+async function handleCTAClick(event, location) {
+  event.preventDefault();
+
+  const btn = event.currentTarget;
+  const originalText = btn.textContent.trim();
+
+  trackCTAClick(location);
+
+  btn.textContent = 'Redirigiendo...';
+  btn.style.opacity = '0.7';
+  btn.style.pointerEvents = 'none';
+
+  try {
+    const res = await fetch('/.netlify/functions/create-preference', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!res.ok) throw new Error('Error del servidor');
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error('No se recibió URL de pago');
+    }
+  } catch (err) {
+    console.error('[MP Error]', err);
+    btn.textContent = originalText;
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+    alert('Hubo un problema al iniciar el pago. Por favor, intentá de nuevo.');
+  }
+}
+
+// Meta Pixel — Lead (cuando alguien descarga una guía gratuita)
+// Llamar esta función desde el botón/form de descarga de guía:
+// fbq('track', 'Lead');
+function trackLeadDownload() {
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead');
+  }
+}
+
+// Meta Pixel — Purchase (confirmación de compra exitosa)
+// Llamar esta función desde la página de thank-you o webhook de pago:
+// trackPurchase();
+function trackPurchase() {
+  if (typeof fbq === 'function') {
+    fbq('track', 'Purchase', {
+      value: 7.00,
+      currency: 'USD',
+      content_name: 'Odontología desde la panza',
+      content_type: 'product',
+    });
+  }
 }
 
 // Smooth reveal al hacer scroll (opcional, mejora la experiencia)

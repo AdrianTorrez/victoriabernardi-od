@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Gracias por tu compra! — Od. Victoria Bernardi</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gracias-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .gracias-inner {
+      max-width: 560px;
+    }
+    .gracias-icon {
+      font-size: 56px;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .gracias-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+    .gracias-title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+    .gracias-body {
+      color: var(--color-text-light);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .gracias-body strong {
+      color: var(--color-text);
+    }
+    .gracias-steps {
+      background: var(--color-bg-section);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .gracias-steps p {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-text);
+    }
+    .gracias-steps ol {
+      padding-left: 20px;
+      color: var(--color-text-light);
+      line-height: 1.9;
+    }
+    .gracias-steps ol li strong {
+      color: var(--color-text);
+    }
+    .btn-volver {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-volver:hover {
+      background: var(--color-accent-hover);
+    }
+    .gracias-ig {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+    .gracias-ig a {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="gracias-section">
+    <div class="gracias-inner">
+      <span class="gracias-icon">🦷</span>
+      <h1 class="gracias-title">¡Gracias por tu compra,<br><em>ya tenés el ebook!</em></h1>
+      <p class="gracias-body">
+        MercadoPago te va a enviar un <strong>email de confirmación</strong> con el comprobante.<br>
+        El ebook llega en los próximos minutos a tu casilla.
+      </p>
+      <div class="gracias-steps">
+        <p>¿No recibiste el email?</p>
+        <ol>
+          <li>Revisá la carpeta de <strong>spam o promociones</strong></li>
+          <li>Esperá unos minutos y volvé a revisar</li>
+          <li>Si no llega, escribime por Instagram y lo resolvemos</li>
+        </ol>
+      </div>
+      <a href="/" class="btn-volver">Volver al inicio</a>
+      <p class="gracias-ig">
+        ¿Tenés dudas? Escribime a
+        <a href="https://www.instagram.com/victoriabernardi.od/" target="_blank" rel="noopener">@victoriabernardi.od</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '961390709715154');
+    fbq('track', 'PageView');
+
+    // Disparar Purchase solo si el pago fue aprobado
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('collection_status') || params.get('status');
+    if (status === 'approved') {
+      fbq('track', 'Purchase', {
+        value: 7.00,
+        currency: 'USD',
+        content_name: 'Odontología desde la panza',
+        content_type: 'product',
+      });
+    }
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=961390709715154&ev=PageView&noscript=1" />
+  </noscript>
+
+</body>
+</html>
