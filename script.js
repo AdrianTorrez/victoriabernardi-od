@@ -118,7 +118,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.card, .learn-block, .problem-item, .testimonio-card').forEach((el) => {
+document.querySelectorAll('.card, .learn-block, .problem-item, .testimonio-card, .book-cover-wrapper').forEach((el) => {
   el.classList.add('fade-in');
   observer.observe(el);
 });

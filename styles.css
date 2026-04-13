@@ -182,12 +182,22 @@ ul {
   position: relative;
   width: 260px;
   flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.book-cover-wrapper:hover {
+  transform: scale(1.04);
 }
 
 .book-cover {
   width: 260px;
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(139, 94, 94, 0.25), 0 4px 16px rgba(0,0,0,0.1);
+  transition: box-shadow 0.4s ease;
+}
+
+.book-cover-wrapper:hover .book-cover {
+  box-shadow: 0 32px 80px rgba(139, 94, 94, 0.35), 0 8px 24px rgba(0,0,0,0.12);
 }
 
 .book-cover-placeholder {
