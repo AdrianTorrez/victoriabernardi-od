@@ -617,6 +617,11 @@ ul {
   border-bottom: 1px solid var(--color-secondary);
 }
 
+.site-logo {
+  height: 150px;
+  width: auto;
+}
+
 /* Footer logo */
 .footer-logo {
   height: 57px;
