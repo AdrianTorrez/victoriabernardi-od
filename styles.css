@@ -426,6 +426,34 @@ ul {
   opacity: 0.75;
 }
 
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.tiktok-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+
+.tiktok-link:hover {
+  opacity: 0.75;
+}
+
+.footer-social {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* ============================================================
    TESTIMONIOS
    ============================================================ */
