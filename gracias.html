@@ -99,7 +99,7 @@
       <h1 class="gracias-title">¡Gracias por tu compra,<br><em>ya tenés el ebook!</em></h1>
       <p class="gracias-body">
         MercadoPago te va a enviar un <strong>email de confirmación</strong> con el comprobante.<br>
-        El ebook llega en los próximos minutos a tu casilla.
+        Hacé clic en el botón para descargar tu ebook ahora mismo.
       </p>
       <div class="gracias-steps">
         <p>¿No recibiste el email?</p>
@@ -138,12 +138,24 @@
     const params = new URLSearchParams(window.location.search);
     const status = params.get('collection_status') || params.get('status');
     if (status === 'approved') {
-      fbq('track', 'Purchase', {
-        value: 7.00,
-        currency: 'USD',
-        content_name: 'Odontología desde la panza',
-        content_type: 'product',
-      });
+      fetch('/.netlify/functions/get-price')
+        .then(r => r.json())
+        .then(({ launch }) => {
+          fbq('track', 'Purchase', {
+            value: launch,
+            currency: 'ARS',
+            content_name: 'Odontología desde la panza',
+            content_type: 'product',
+          });
+        })
+        .catch(() => {
+          fbq('track', 'Purchase', {
+            value: 7000,
+            currency: 'ARS',
+            content_name: 'Odontología desde la panza',
+            content_type: 'product',
+          });
+        });
     }
   </script>
   <noscript>

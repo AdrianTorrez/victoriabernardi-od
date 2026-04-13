@@ -1,10 +1,40 @@
+// Precio cargado desde el servidor
+let precioLanzamientoARS = null;
+
+function formatPrecioARS(n) {
+  return new Intl.NumberFormat('es-AR', {
+    style: 'currency',
+    currency: 'ARS',
+    maximumFractionDigits: 0,
+  }).format(n);
+}
+
+async function loadPrice() {
+  try {
+    const res = await fetch('/.netlify/functions/get-price');
+    if (!res.ok) return;
+    const { launch, regular } = await res.json();
+    precioLanzamientoARS = launch;
+
+    const launchStr = formatPrecioARS(launch);
+    const regularStr = formatPrecioARS(regular);
+
+    document.querySelectorAll('.js-price-launch').forEach(el => { el.textContent = launchStr; });
+    document.querySelectorAll('.js-price-regular').forEach(el => { el.textContent = regularStr; });
+  } catch (e) {
+    // silently fail — los placeholders quedan visibles
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadPrice);
+
 // Tracking de clicks en botones CTA
 function trackCTAClick(location) {
   // Meta Pixel — InitiateCheckout (click en botón de compra)
   if (typeof fbq === 'function') {
     fbq('track', 'InitiateCheckout', {
-      value: 7.00,
-      currency: 'USD',
+      value: precioLanzamientoARS || 7000,
+      currency: 'ARS',
       content_name: 'Odontología desde la panza',
       content_type: 'product',
     });
@@ -65,8 +95,8 @@ function trackLeadDownload() {
 function trackPurchase() {
   if (typeof fbq === 'function') {
     fbq('track', 'Purchase', {
-      value: 7.00,
-      currency: 'USD',
+      value: precioLanzamientoARS || 7000,
+      currency: 'ARS',
       content_name: 'Odontología desde la panza',
       content_type: 'product',
     });

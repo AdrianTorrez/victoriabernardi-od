@@ -2,14 +2,14 @@
    VARIABLES & RESET
    ============================================================ */
 :root {
-  --color-primary: #C8A4A4;
-  --color-secondary: #E8D5D5;
-  --color-accent: #8B5E5E;
-  --color-accent-hover: #7a5252;
-  --color-text: #2C2C2C;
-  --color-text-light: #666666;
-  --color-bg: #FDFAF9;
-  --color-bg-section: #F5EDED;
+  --color-primary: #F0B99B;
+  --color-secondary: #E8D5C4;
+  --color-accent: #8C6E60;
+  --color-accent-hover: #7a5c4f;
+  --color-text: #3D2F28;
+  --color-text-light: #8C6E60;
+  --color-bg: #FAF4EE;
+  --color-bg-section: #F5EDE1;
   --color-white: #FFFFFF;
 
   --font-heading: 'Playfair Display', serif;
