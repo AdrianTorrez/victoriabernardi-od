@@ -729,6 +729,6 @@ ul {
   }
 
   .photo-placeholder {
-    display: flex;
+    display: none;
   }
 }
