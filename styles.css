@@ -618,20 +618,20 @@ ul {
 }
 
 .site-logo {
-  height: 48px;
+  height: 62px;
   width: auto;
 }
 
 /* Footer logo */
 .footer-logo {
-  height: 44px;
+  height: 57px;
   width: auto;
   opacity: 0.85;
 }
 
 /* CTA logo */
 .cta-logo {
-  height: 52px;
+  height: 68px;
   width: auto;
   margin-bottom: 24px;
   opacity: 0.9;
