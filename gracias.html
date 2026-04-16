@@ -93,9 +93,18 @@
 </head>
 <body>
 
-  <section class="gracias-section">
+  <!-- Estado de verificación -->
+  <section class="gracias-section" id="estado-verificando" style="display:flex;">
     <div class="gracias-inner">
-      <span class="gracias-icon">🦷</span>
+      <img src="logo.png" alt="Victoria Bernardi Odontóloga" style="height: 150px; width: auto; margin-bottom: 24px; display: block; margin-left: auto; margin-right: auto;" />
+      <p class="gracias-body">Verificando tu compra...</p>
+    </div>
+  </section>
+
+  <!-- Contenido post-compra (oculto hasta verificar) -->
+  <section class="gracias-section" id="contenido-gracias" style="display:none;">
+    <div class="gracias-inner">
+      <img src="logo.png" alt="Victoria Bernardi Odontóloga" style="height: 150px; width: auto; margin-bottom: 24px; display: block; margin-left: auto; margin-right: auto;" />
       <h1 class="gracias-title">¡Gracias por tu compra,<br><em>ya tenés acceso al ebook!</em></h1>
       <p class="gracias-body">
         MercadoPago te va a enviar un <strong>email de confirmación</strong> con el comprobante.<br>
@@ -189,6 +198,33 @@
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=961390709715154&ev=PageView&noscript=1" />
   </noscript>
+
+  <!-- Verificación de token de compra -->
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+
+      if (!token) {
+        window.location.href = '/';
+        return;
+      }
+
+      try {
+        const res = await fetch('/.netlify/functions/verify-download?token=' + encodeURIComponent(token));
+        const { valid } = await res.json();
+
+        if (valid) {
+          document.getElementById('estado-verificando').style.display = 'none';
+          document.getElementById('contenido-gracias').style.display = 'flex';
+        } else {
+          window.location.href = '/';
+        }
+      } catch {
+        window.location.href = '/';
+      }
+    })();
+  </script>
 
 </body>
 </html>

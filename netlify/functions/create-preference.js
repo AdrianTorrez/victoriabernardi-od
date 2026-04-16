@@ -1,11 +1,24 @@
 const { MercadoPagoConfig, Preference } = require('mercadopago');
+const crypto = require('crypto');
 
-// Precio en pesos argentinos — configurar con la variable de entorno MP_PRECIO_ARS en Netlify
 const PRECIO_ARS = Number(process.env.MP_PRECIO_ARS) || 7000;
 
 const client = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN,
 });
+
+function generateDownloadToken() {
+  const secret = process.env.DOWNLOAD_SECRET;
+  if (!secret) {
+    console.error('[create-preference] DOWNLOAD_SECRET no configurado');
+    return null;
+  }
+  const payload = Buffer.from(
+    JSON.stringify({ exp: Date.now() + 30 * 60 * 1000 })
+  ).toString('base64url');
+  const sig = crypto.createHmac('sha256', secret).update(payload).digest('base64url');
+  return `${payload}.${sig}`;
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -13,6 +26,11 @@ exports.handler = async (event) => {
   }
 
   try {
+    const token = generateDownloadToken();
+    const successUrl = token
+      ? `https://victoriabernardi.com/gracias?token=${token}`
+      : 'https://victoriabernardi.com/gracias';
+
     const preference = new Preference(client);
 
     const result = await preference.create({
@@ -26,7 +44,7 @@ exports.handler = async (event) => {
           },
         ],
         back_urls: {
-          success: 'https://victoriabernardi.com/gracias',
+          success: successUrl,
           failure: 'https://victoriabernardi.com',
           pending: 'https://victoriabernardi.com/gracias',
         },
