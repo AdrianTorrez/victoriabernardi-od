@@ -108,66 +108,39 @@
       <h1 class="gracias-title">¡Gracias por tu compra,<br><em>ya tenés acceso al ebook!</em></h1>
       <p class="gracias-body">
         MercadoPago te va a enviar un <strong>email de confirmación</strong> con el comprobante.<br>
-        Además del ebook, tenés acceso a <strong>4 imprimibles exclusivos</strong> para acompañar el aprendizaje.
+        Completá el formulario y te enviamos todo el material directamente a tu correo.
       </p>
 
-      <!-- Contador regresivo -->
-      <div id="countdown-box" style="background: var(--color-bg-section); border-radius: 12px; padding: 14px 24px; margin-bottom: 28px; text-align: center;">
-        <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-light);">Los links de descarga estarán disponibles por</p>
-        <p style="margin: 4px 0 0; font-size: 1.6rem; font-weight: 700; color: var(--color-accent); font-family: monospace;" id="countdown-timer">30:00</p>
+      <!-- Detalle del material -->
+      <div class="gracias-steps" style="text-align:left; margin-bottom: 28px;">
+        <p style="font-weight:700; color:var(--color-text); margin-bottom:12px;">Vas a recibir por email:</p>
+        <ul style="padding-left:20px; color:var(--color-text-light); line-height:2;">
+          <li>📖 <strong style="color:var(--color-text);">Ebook</strong> — Odontología desde la panza (48 páginas)</li>
+          <li>📋 <strong style="color:var(--color-text);">Imprimible</strong> — Check list</li>
+          <li>📈 <strong style="color:var(--color-text);">Imprimible</strong> — Track de hábitos</li>
+          <li>🦷 <strong style="color:var(--color-text);">Imprimible</strong> — Cuándo salieron los dientes</li>
+          <li>🧸 <strong style="color:var(--color-text);">Imprimible</strong> — Historias para dejar el chupete</li>
+        </ul>
       </div>
 
-      <a href="https://drive.google.com/uc?export=download&id=1UDDNsalLAFHbSLUAl1HytjEIG6j1WkdT" class="btn-volver" download>
-        Descargar mi ebook
-      </a>
-      <br><br>
-      <div class="gracias-steps" style="text-align:center; margin-bottom: 32px;">
-        <p style="font-weight: 700; color: var(--color-text); margin-bottom: 20px; font-size: 1.1rem;">🎁 Material imprimible incluido</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px;">
-          <div style="background: var(--color-bg-section); border-radius: 8px; padding: 16px; text-align: center;">
-            <div style="font-size: 24px; margin-bottom: 8px;">📋</div>
-            <p style="font-weight: 700; margin-bottom: 8px; color: var(--color-text);">Check list</p>
-            <a href="imprimible-checklist.pdf" download style="display: inline-block; padding: 8px 16px; background: var(--color-accent); color: var(--color-white); border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-decoration: none;">Descargar</a>
-          </div>
-          <div style="background: var(--color-bg-section); border-radius: 8px; padding: 16px; text-align: center;">
-            <div style="font-size: 24px; margin-bottom: 8px;">📈</div>
-            <p style="font-weight: 700; margin-bottom: 8px; color: var(--color-text);">Track de hábitos</p>
-            <a href="imprimible-track-habitos.pdf" download style="display: inline-block; padding: 8px 16px; background: var(--color-accent); color: var(--color-white); border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-decoration: none;">Descargar</a>
-          </div>
-          <div style="background: var(--color-bg-section); border-radius: 8px; padding: 16px; text-align: center;">
-            <div style="font-size: 24px; margin-bottom: 8px;">🦷</div>
-            <p style="font-weight: 700; margin-bottom: 8px; color: var(--color-text);">Cuándo salieron los dientes</p>
-            <a href="imprimible-dientes.pdf" download style="display: inline-block; padding: 8px 16px; background: var(--color-accent); color: var(--color-white); border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-decoration: none;">Descargar</a>
-          </div>
-          <div style="background: var(--color-bg-section); border-radius: 8px; padding: 16px; text-align: center;">
-            <div style="font-size: 24px; margin-bottom: 8px;">🧸</div>
-            <p style="font-weight: 700; margin-bottom: 8px; color: var(--color-text);">Historias para dejar el chupete</p>
-            <a href="imprimible-chupete.pdf" download style="display: inline-block; padding: 8px 16px; background: var(--color-accent); color: var(--color-white); border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-decoration: none;">Descargar</a>
-          </div>
-        </div>
-        <p style="font-size: 0.9rem; color: var(--color-text-light);">Imprimí y usalos para acompañar la lectura del ebook</p>
-      </div>
-
-      <a href="/" class="btn-volver" style="background: transparent; color: var(--color-accent); border: 2px solid var(--color-accent);">Volver al inicio</a>
-      <br><br>
-
-      <!-- Formulario de recupero -->
-      <div class="gracias-steps" style="text-align: left; margin-bottom: 24px;">
-        <p style="font-weight: 700; color: var(--color-text); margin-bottom: 6px;">¿Se venció el tiempo antes de descargar?</p>
-        <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 16px;">Dejá tu nombre y email y te enviamos el material por correo.</p>
-        <form name="recupero-ebook" method="POST" data-netlify="true" id="form-recupero" style="display: flex; flex-direction: column; gap: 12px;">
-          <input type="hidden" name="form-name" value="recupero-ebook" />
-          <input type="text" name="nombre" placeholder="Tu nombre" required
-            style="padding: 12px 16px; border: 1px solid var(--color-secondary); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--color-bg); color: var(--color-text);" />
-          <input type="email" name="email" placeholder="Tu email" required
-            style="padding: 12px 16px; border: 1px solid var(--color-secondary); border-radius: 8px; font-family: var(--font-body); font-size: 1rem; background: var(--color-bg); color: var(--color-text);" />
-          <button type="submit"
-            style="padding: 12px 24px; background: var(--color-accent); color: white; border: none; border-radius: 8px; font-family: var(--font-body); font-weight: 700; font-size: 1rem; cursor: pointer;">
+      <!-- Formulario de entrega -->
+      <div style="width:100%; margin-bottom:32px;">
+        <form id="form-material" style="display:flex; flex-direction:column; gap:12px;">
+          <input type="text" id="input-nombre" placeholder="Tu nombre" required
+            style="padding:12px 16px; border:1px solid var(--color-secondary); border-radius:8px; font-family:var(--font-body); font-size:1rem; background:var(--color-bg); color:var(--color-text);" />
+          <input type="email" id="input-email" placeholder="Tu email" required
+            style="padding:12px 16px; border:1px solid var(--color-secondary); border-radius:8px; font-family:var(--font-body); font-size:1rem; background:var(--color-bg); color:var(--color-text);" />
+          <button type="submit" id="btn-enviar"
+            style="padding:14px 24px; background:var(--color-accent); color:white; border:none; border-radius:8px; font-family:var(--font-body); font-weight:700; font-size:1rem; cursor:pointer;">
             Enviarme el material
           </button>
         </form>
-        <p id="form-ok" style="display:none; color: var(--color-accent); font-weight: 700; margin-top: 12px;">¡Listo! En breve te enviamos todo al correo.</p>
+        <p id="form-ok" style="display:none; color:var(--color-accent); font-weight:700; margin-top:16px; font-size:1.05rem;">¡Listo! Revisá tu correo en los próximos minutos.</p>
+        <p id="form-err" style="display:none; color:#c0392b; margin-top:12px; font-size:0.9rem;">Hubo un problema al enviar. Escribime por Instagram y lo resolvemos.</p>
       </div>
+
+      <a href="/" class="btn-volver" style="background:transparent; color:var(--color-accent); border:2px solid var(--color-accent);">Volver al inicio</a>
+      <br><br>
 
       <div class="gracias-steps">
         <p>¿No recibiste el email de MercadoPago?</p>
@@ -249,39 +222,38 @@
         document.getElementById('estado-verificando').style.display = 'none';
         document.getElementById('contenido-gracias').style.display = 'flex';
 
-        // Calcular expiración desde el payload del token
-        const payload = token.split('.')[0];
-        const { exp } = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
-
-        // Contador regresivo
-        const timerEl = document.getElementById('countdown-timer');
-        const interval = setInterval(() => {
-          const remaining = Math.max(0, exp - Date.now());
-          const min = String(Math.floor(remaining / 60000)).padStart(2, '0');
-          const sec = String(Math.floor((remaining % 60000) / 1000)).padStart(2, '0');
-          timerEl.textContent = `${min}:${sec}`;
-          if (remaining === 0) {
-            clearInterval(interval);
-            document.getElementById('countdown-box').innerHTML =
-              '<p style="margin:0; color: var(--color-accent); font-weight:700;">⏰ El tiempo de descarga venció. Completá el formulario de abajo para recibir el material por email.</p>';
-          }
-        }, 1000);
-
       } catch {
         window.location.href = '/';
       }
     })();
 
-    // Form de recupero — envío via fetch para no recargar la página
+    // Form de entrega — llama a send-material
     document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('form-recupero');
+      const form = document.getElementById('form-material');
       if (!form) return;
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const data = new FormData(form);
-        await fetch('/', { method: 'POST', body: data });
-        form.style.display = 'none';
-        document.getElementById('form-ok').style.display = 'block';
+        const btn = document.getElementById('btn-enviar');
+        const nombre = document.getElementById('input-nombre').value.trim();
+        const email = document.getElementById('input-email').value.trim();
+
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+
+        try {
+          const res = await fetch('/.netlify/functions/send-material', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, email }),
+          });
+          if (!res.ok) throw new Error();
+          form.style.display = 'none';
+          document.getElementById('form-ok').style.display = 'block';
+        } catch {
+          btn.textContent = 'Enviarme el material';
+          btn.disabled = false;
+          document.getElementById('form-err').style.display = 'block';
+        }
       });
     });
   </script>
