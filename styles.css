@@ -177,6 +177,26 @@ ul {
   margin-top: 14px;
 }
 
+.hero-bonus {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-bonus li {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+}
+
+.hero-bonus li:first-child {
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
 /* Book cover */
 .book-cover-wrapper {
   position: relative;
@@ -711,6 +731,11 @@ ul {
   border-radius: 20px;
   margin-bottom: 12px;
   width: fit-content;
+}
+
+.guia-badge-incluido {
+  background: var(--color-primary);
+  color: var(--color-text);
 }
 
 .guia-info h3 {
