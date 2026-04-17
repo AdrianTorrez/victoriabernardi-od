@@ -1,7 +1,7 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = process.env.FROM_EMAIL || 'hola@victoriabernardi.com';
 const SITE_URL = 'https://victoriabernardi.com';
-const EBOOK_URL = 'https://drive.google.com/uc?export=download&id=1UDDNsalLAFHbSLUAl1HytjEIG6j1WkdT';
+const EBOOK_URL = 'https://drive.google.com/uc?export=download&id=1td_isTmFZrxkD8d_5ll8EWZl4wh_gpUB';
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
