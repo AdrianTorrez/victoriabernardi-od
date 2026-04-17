@@ -42,7 +42,7 @@ exports.handler = async (event) => {
       <tr>
         <td style="background:#F5EDE1; border-radius:8px; padding:16px 20px;">
           <strong style="color:#3D2F28;">Odontología desde la panza</strong><br/>
-          <span style="color:#8C6E60; font-size:0.9rem;">Od. Victoria Bernardi · 48 páginas</span><br/><br/>
+          <span style="color:#8C6E60; font-size:0.9rem;">Od. Victoria Bernardi · 71 páginas</span><br/><br/>
           <a href="${EBOOK_URL}" style="display:inline-block; padding:10px 24px; background:#8C6E60; color:white; border-radius:6px; font-weight:bold; text-decoration:none; font-family:Arial,sans-serif;">Descargar ebook</a>
         </td>
       </tr>
