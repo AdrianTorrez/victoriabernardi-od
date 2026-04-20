@@ -188,6 +188,7 @@
           body: JSON.stringify({ nombre, email }),
         });
         if (!res.ok) throw new Error();
+        fbq('track', 'Lead');
         document.getElementById('form-guias').style.display = 'none';
         document.getElementById('form-ok').style.display = 'block';
       } catch {
