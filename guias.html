@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guías gratuitas — Od. Victoria Bernardi</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .guias-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .guias-page-inner {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .guias-page-logo {
+      height: 200px;
+      width: auto;
+      margin-bottom: 28px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .guias-page-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+    .guias-page-title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+    .guias-page-sub {
+      color: var(--color-text-light);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .guias-lista {
+      background: var(--color-bg-section);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .guias-lista p {
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 10px;
+    }
+    .guias-lista ul {
+      padding-left: 0;
+      list-style: none;
+      color: var(--color-text-light);
+      line-height: 2;
+    }
+    .guias-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .guias-form input {
+      padding: 12px 16px;
+      border: 1px solid var(--color-secondary);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      background: var(--color-bg);
+      color: var(--color-text);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .guias-form input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+    .btn-guias-submit {
+      padding: 14px 24px;
+      background: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-guias-submit:hover {
+      background: var(--color-accent-hover);
+    }
+    .guias-ig {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+    .guias-ig a {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="guias-page">
+    <div class="guias-page-inner">
+
+      <img src="logo.png" alt="Victoria Bernardi Odontóloga" class="guias-page-logo" />
+
+      <h1 class="guias-page-title">Guías gratuitas<br><em>para mamás y bebés</em></h1>
+      <p class="guias-page-sub">Ingresá tu nombre y email y te las enviamos al instante. Sin spam, solo información útil.</p>
+
+      <div class="guias-lista">
+        <p>Vas a recibir:</p>
+        <ul>
+          <li>🪥 Mi primer cepillado dental</li>
+          <li>🧸 Chupetes — todo lo que necesitás saber</li>
+        </ul>
+      </div>
+
+      <form class="guias-form" id="form-guias">
+        <input type="text" id="input-nombre" placeholder="Tu nombre" required />
+        <input type="email" id="input-email" placeholder="Tu email" required />
+        <input type="email" id="input-email2" placeholder="Confirmá tu email" required />
+        <p id="email-mismatch" style="display:none; color:#c0392b; font-size:0.88rem; margin:0; text-align:left;">Los emails no coinciden.</p>
+        <button type="submit" class="btn-guias-submit" id="btn-enviar">Enviarme las guías</button>
+      </form>
+
+      <p id="form-ok" style="display:none; color:var(--color-accent); font-weight:700; font-size:1.05rem;">¡Listo! Revisá tu correo en los próximos minutos.</p>
+      <p id="form-err" style="display:none; color:#c0392b; font-size:0.9rem;">Hubo un problema. Escribime por Instagram y lo resolvemos.</p>
+
+      <p class="guias-ig">
+        ¿Tenés dudas? Escribime a
+        <a href="https://www.instagram.com/victoriabernardi.od/" target="_blank" rel="noopener">@victoriabernardi.od</a>
+      </p>
+
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('form-guias').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('input-nombre').value.trim();
+      const email = document.getElementById('input-email').value.trim();
+      const email2 = document.getElementById('input-email2').value.trim();
+      const mismatch = document.getElementById('email-mismatch');
+      const btn = document.getElementById('btn-enviar');
+
+      if (email !== email2) {
+        mismatch.style.display = 'block';
+        return;
+      }
+      mismatch.style.display = 'none';
+
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/.netlify/functions/send-guias', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, email }),
+        });
+        if (!res.ok) throw new Error();
+        document.getElementById('form-guias').style.display = 'none';
+        document.getElementById('form-ok').style.display = 'block';
+      } catch {
+        btn.textContent = 'Enviarme las guías';
+        btn.disabled = false;
+        document.getElementById('form-err').style.display = 'block';
+      }
+    });
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '961390709715154');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=961390709715154&ev=PageView&noscript=1" />
+  </noscript>
+
+</body>
+</html>
