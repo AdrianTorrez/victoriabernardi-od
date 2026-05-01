@@ -220,6 +220,7 @@
         });
         if (!res.ok) throw new Error();
         fbq('track', 'Lead');
+        gtag('event', 'generate_lead', { method: 'guias_form', guide_type: 'cepillo_chupete' });
         document.getElementById('form-guias').style.display = 'none';
         document.getElementById('form-ok').style.display = 'block';
       } catch {
@@ -247,6 +248,44 @@
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=961390709715154&ev=PageView&noscript=1" />
   </noscript>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZCZJ17KE2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZCZJ17KE2V');
+
+    // Scroll depth tracking (25%, 50%, 75%, 100%)
+    (function() {
+      var fired = {};
+      window.addEventListener('scroll', function() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h <= 0) return;
+        var pct = Math.round((window.scrollY / h) * 100);
+        [25, 50, 75, 100].forEach(function(t) {
+          if (pct >= t && !fired[t]) {
+            fired[t] = true;
+            gtag('event', 'scroll_depth', { percent: t, page: 'guias' });
+          }
+        });
+      });
+    })();
+
+    // Form interaction tracking (first field focus)
+    (function() {
+      var tracked = false;
+      document.querySelectorAll('#form-guias input').forEach(function(el) {
+        el.addEventListener('focus', function() {
+          if (!tracked) {
+            tracked = true;
+            gtag('event', 'form_start', { form_name: 'guias' });
+          }
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

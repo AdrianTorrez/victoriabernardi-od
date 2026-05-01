@@ -202,6 +202,27 @@
       src="https://www.facebook.com/tr?id=961390709715154&ev=PageView&noscript=1" />
   </noscript>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZCZJ17KE2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZCZJ17KE2V');
+
+    // Track purchase event if payment was approved
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var status = params.get('collection_status') || params.get('status');
+      if (status === 'approved') {
+        gtag('event', 'purchase', {
+          currency: 'ARS',
+          items: [{ item_name: 'Odontología desde la panza' }]
+        });
+      }
+    })();
+  </script>
+
   <!-- Verificación de token + contador + form -->
   <script>
     (async function () {
