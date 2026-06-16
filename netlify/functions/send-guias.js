@@ -1,6 +1,34 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+// Key con permiso de contactos/audiences (full access o scoped). Cae al de envío si no está.
+const RESEND_AUDIENCE_KEY = process.env.RESEND_AUDIENCE_KEY || RESEND_API_KEY;
+const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '79049a85-116b-4d81-8685-a4aa1f1e45b9';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'hola@victoriabernardi.com';
 const SITE_URL = 'https://victoriabernardi.com';
+
+// Agrega el lead a la audiencia de Resend. No bloquea: si falla, solo loguea.
+async function addToAudience(nombre, email) {
+  try {
+    const [firstName, ...rest] = (nombre || '').trim().split(' ');
+    const res = await fetch(`https://api.resend.com/audiences/${AUDIENCE_ID}/contacts`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_AUDIENCE_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        first_name: firstName || '',
+        last_name: rest.join(' '),
+        unsubscribed: false,
+      }),
+    });
+    if (!res.ok) {
+      console.error('[send-guias] No se pudo agregar a la audiencia:', await res.text());
+    }
+  } catch (err) {
+    console.error('[send-guias] Error agregando a la audiencia:', err);
+  }
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -85,6 +113,9 @@ exports.handler = async (event) => {
       console.error('[send-guias] Resend error:', err);
       return { statusCode: 500, body: JSON.stringify({ error: 'Error al enviar el email' }) };
     }
+
+    // Guardar el lead en la audiencia para campañas/remarketing
+    await addToAudience(nombre, email);
 
     return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   } catch (err) {
