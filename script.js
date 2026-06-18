@@ -28,6 +28,41 @@ async function loadPrice() {
 
 document.addEventListener('DOMContentLoaded', loadPrice);
 
+// Contador regresivo de la oferta — termina al cierre de la campaña (20 jun 2026, 23:59 ART)
+const OFFER_DEADLINE = new Date('2026-06-20T23:59:59-03:00').getTime();
+
+function updateCountdown() {
+  const boxes = document.querySelectorAll('.offer-countdown');
+  if (!boxes.length) return;
+
+  let diff = OFFER_DEADLINE - Date.now();
+
+  if (diff <= 0) {
+    boxes.forEach(el => { el.innerHTML = '<span class="cd-ended">¡Oferta finalizada!</span>'; });
+    return;
+  }
+
+  const d = Math.floor(diff / 86400000); diff %= 86400000;
+  const h = Math.floor(diff / 3600000); diff %= 3600000;
+  const m = Math.floor(diff / 60000); diff %= 60000;
+  const s = Math.floor(diff / 1000);
+  const pad = n => String(n).padStart(2, '0');
+
+  boxes.forEach(el => {
+    const set = (cls, val) => {
+      const node = el.querySelector(cls);
+      if (node) node.textContent = pad(val);
+    };
+    set('.cd-d', d);
+    set('.cd-h', h);
+    set('.cd-m', m);
+    set('.cd-s', s);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', updateCountdown);
+setInterval(updateCountdown, 1000);
+
 // Tracking de clicks en botones CTA
 function trackCTAClick(location) {
   // Meta Pixel — InitiateCheckout (click en botón de compra)

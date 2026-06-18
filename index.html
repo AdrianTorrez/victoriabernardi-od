@@ -23,6 +23,61 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Contador de oferta */
+    .offer-banner {
+      margin: 20px 0 24px;
+      padding: 16px 20px;
+      background: #FBEEE6;
+      border: 1px solid #F0B99B;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .offer-banner-title {
+      font-weight: 700;
+      color: #8C6E60;
+      font-size: 0.95rem;
+      margin: 0 0 10px;
+    }
+    .offer-countdown {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    .offer-countdown .cd-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 56px;
+      padding: 8px 6px;
+      background: #8C6E60;
+      color: #fff;
+      border-radius: 8px;
+    }
+    .offer-countdown .cd-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .offer-countdown .cd-box small {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .offer-banner-note {
+      margin: 10px 0 0;
+      font-size: 0.85rem;
+      color: #8C6E60;
+    }
+    .offer-countdown .cd-ended {
+      color: #c0392b;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -44,7 +99,16 @@
         <a href="#" class="btn-cta" onclick="handleCTAClick(event, 'hero')">
           Quiero el ebook — <span class="js-price-launch">$&nbsp;···</span>
         </a>
-        <p class="hero-urgency">⏳ Precio especial de lanzamiento · Sube a <span class="js-price-regular">$&nbsp;···</span> pronto</p>
+        <div class="offer-banner">
+          <p class="offer-banner-title">🔥 50% OFF de lanzamiento · termina en</p>
+          <div class="offer-countdown" role="timer" aria-label="Tiempo restante de la oferta">
+            <span class="cd-box"><span class="cd-num cd-d">··</span><small>días</small></span>
+            <span class="cd-box"><span class="cd-num cd-h">··</span><small>hs</small></span>
+            <span class="cd-box"><span class="cd-num cd-m">··</span><small>min</small></span>
+            <span class="cd-box"><span class="cd-num cd-s">··</span><small>seg</small></span>
+          </div>
+          <p class="offer-banner-note">Después vuelve a <s><span class="js-price-regular">$&nbsp;···</span></s></p>
+        </div>
         <ul class="hero-bonus">
           <li>🎁 Incluye 4 imprimibles de regalo:</li>
           <li>📋 Check list</li>
@@ -391,6 +455,15 @@
       <div class="cta-price-block">
         <p class="cta-price-regular">Precio regular: <s><span class="js-price-regular">$&nbsp;···</span></s></p>
         <p class="cta-price-launch">Precio de lanzamiento: <strong><span class="js-price-launch">$&nbsp;···</span></strong></p>
+      </div>
+      <div class="offer-banner">
+        <p class="offer-banner-title">⏳ La oferta 50% OFF termina en</p>
+        <div class="offer-countdown" role="timer" aria-label="Tiempo restante de la oferta">
+          <span class="cd-box"><span class="cd-num cd-d">··</span><small>días</small></span>
+          <span class="cd-box"><span class="cd-num cd-h">··</span><small>hs</small></span>
+          <span class="cd-box"><span class="cd-num cd-m">··</span><small>min</small></span>
+          <span class="cd-box"><span class="cd-num cd-s">··</span><small>seg</small></span>
+        </div>
       </div>
       <a href="#" class="btn-cta btn-cta-large" onclick="handleCTAClick(event, 'cta_final')">
         Quiero el ebook ahora
