@@ -77,6 +77,33 @@
       font-weight: 700;
       font-size: 1.05rem;
     }
+    /* Botón secundario — material gratuito */
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cta-final .cta-buttons { justify-content: center; }
+    .btn-cta-secondary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: transparent;
+      color: #8C6E60;
+      border: 2px solid #8C6E60;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-cta-secondary:hover { background: #8C6E60; color: #fff; }
+    .cta-free-note {
+      margin: 12px 0 0;
+      font-size: 0.9rem;
+      color: #8C6E60;
+    }
   </style>
 </head>
 <body>
@@ -96,9 +123,15 @@
         <p class="hero-label">Ebook Digital · 71 páginas</p>
         <h1 class="hero-title">Odontología<br><em>desde la panza</em></h1>
         <p class="hero-sub">Lo que tenés que saber sobre la salud bucal durante el embarazo y los primeros años de tu bebé</p>
-        <a href="#" class="btn-cta" onclick="handleCTAClick(event, 'hero')">
-          Quiero el ebook — <span class="js-price-launch">$&nbsp;···</span>
-        </a>
+        <div class="cta-buttons">
+          <a href="#" class="btn-cta" onclick="handleCTAClick(event, 'hero')">
+            Quiero el ebook — <span class="js-price-launch">$&nbsp;···</span>
+          </a>
+          <a href="/guias" class="btn-cta-secondary" onclick="trackFreeMaterial('hero')">
+            Descargar material gratuito
+          </a>
+        </div>
+        <p class="cta-free-note">¿Todavía no te decidís? Llevate las guías gratis 🎁</p>
         <div class="offer-banner">
           <p class="offer-banner-title">🔥 50% OFF de lanzamiento · termina en</p>
           <div class="offer-countdown" role="timer" aria-label="Tiempo restante de la oferta">
@@ -465,9 +498,15 @@
           <span class="cd-box"><span class="cd-num cd-s">··</span><small>seg</small></span>
         </div>
       </div>
-      <a href="#" class="btn-cta btn-cta-large" onclick="handleCTAClick(event, 'cta_final')">
-        Quiero el ebook ahora
-      </a>
+      <div class="cta-buttons">
+        <a href="#" class="btn-cta btn-cta-large" onclick="handleCTAClick(event, 'cta_final')">
+          Quiero el ebook ahora
+        </a>
+        <a href="/guias" class="btn-cta-secondary" onclick="trackFreeMaterial('cta_final')">
+          Descargar material gratuito
+        </a>
+      </div>
+      <p class="cta-free-note">¿Todavía no te decidís? Llevate las guías gratis 🎁</p>
       <p class="cta-footer-note">Pago seguro a través de MercadoPago · Acceso inmediato después de la compra</p>
     </div>
   </section>

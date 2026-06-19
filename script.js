@@ -28,6 +28,17 @@ async function loadPrice() {
 
 document.addEventListener('DOMContentLoaded', loadPrice);
 
+// Click en "Descargar material gratuito" — mide cuántos toman el camino de lead.
+// No bloquea la navegación a /guias.
+function trackFreeMaterial(location) {
+  if (typeof gtag === 'function') {
+    gtag('event', 'select_free_material', { location: location || 'home' });
+  }
+  if (typeof fbq === 'function') {
+    fbq('trackCustom', 'FreeMaterialClick', { location: location || 'home' });
+  }
+}
+
 // Contador regresivo de la oferta — termina al cierre de la campaña (20 jun 2026, 23:59 ART)
 const OFFER_DEADLINE = new Date('2026-06-20T23:59:59-03:00').getTime();
 
