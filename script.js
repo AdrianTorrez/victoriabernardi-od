@@ -40,7 +40,7 @@ function trackFreeMaterial(location) {
 }
 
 // Contador regresivo de la oferta — termina al cierre de la campaña (20 jun 2026, 23:59 ART)
-const OFFER_DEADLINE = new Date('2026-06-20T23:59:59-03:00').getTime();
+const OFFER_DEADLINE = new Date('2026-06-28T23:59:59-03:00').getTime();
 
 function updateCountdown() {
   const boxes = document.querySelectorAll('.offer-countdown');
