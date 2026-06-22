@@ -4,7 +4,7 @@ const RESEND_AUDIENCE_KEY = process.env.RESEND_AUDIENCE_KEY || RESEND_API_KEY;
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '79049a85-116b-4d81-8685-a4aa1f1e45b9';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'hola@victoriabernardi.com';
 const SITE_URL = 'https://victoriabernardi.com';
-const EBOOK_URL = 'https://drive.google.com/uc?export=download&id=1YDLcboBirqBwnB4fpEkAoIsEkD2HYxQr';
+const EBOOK_URL = 'https://drive.google.com/uc?export=download&id=12lK5ivr3w2rXKDtu3rlaLgov7w2OMF_-';
 
 // Agrega el comprador a la audiencia de Resend. No bloquea: si falla, solo loguea.
 async function addToAudience(nombre, email) {
