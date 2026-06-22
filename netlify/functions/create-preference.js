@@ -37,7 +37,7 @@ exports.handler = async (event) => {
       body: {
         items: [
           {
-            title: 'Odontología desde la panza — Ebook de Od. Victoria Bernardi',
+            title: '¿Cómo no perder tus dientes en el embarazo y cuidar los de tu bebé? — Ebook de Od. Victoria Bernardi',
             quantity: 1,
             unit_price: PRECIO_ARS,
             currency_id: 'ARS',

@@ -81,7 +81,7 @@ function trackCTAClick(location) {
     fbq('track', 'InitiateCheckout', {
       value: precioLanzamientoARS || 7000,
       currency: 'ARS',
-      content_name: 'Odontología desde la panza',
+      content_name: '¿Cómo no perder tus dientes en el embarazo y cuidar los de tu bebé?',
       content_type: 'product',
     });
   }
@@ -143,7 +143,7 @@ function trackPurchase() {
     fbq('track', 'Purchase', {
       value: precioLanzamientoARS || 7000,
       currency: 'ARS',
-      content_name: 'Odontología desde la panza',
+      content_name: '¿Cómo no perder tus dientes en el embarazo y cuidar los de tu bebé?',
       content_type: 'product',
     });
   }

@@ -7,7 +7,7 @@
 
 Sitio web / landing page para la venta del ebook **"Odontología desde la panza: cómo cuidar tu sonrisa y la de tu bebé"** de Od. Victoria Bernardi.
 
-El sitio tiene un único objetivo: **convertir visitas en compras**. No es un portfolio ni un blog — es una landing page de venta directa con link a Hotmart.
+El sitio tiene un único objetivo: **convertir visitas en compras**. No es un portfolio ni un blog — es una landing page de venta directa integrada con Mercado Pago.
 
 ---
 
@@ -28,7 +28,7 @@ El sitio tiene un único objetivo: **convertir visitas en compras**. No es un po
 - **Formato:** PDF digital, 48 páginas, diseño profesional en tonos pastel/rosa
 - **Precio de lanzamiento:** USD 7
 - **Precio regular:** USD 12
-- **Plataforma de venta:** Hotmart
+- **Plataforma de venta:** Mercado Pago (Checkout Pro via Netlify Functions)
 - **Público objetivo:** Embarazadas, mamás/papás con bebés de 0 a 2 años, familiares que buscan regalo útil
 
 ### Contenido del ebook (4 partes)
@@ -84,7 +84,7 @@ El sitio tiene una sola página con estas secciones en orden:
 - Repetir botón de compra
 - Precio: USD 7 (lanzamiento) → USD 12 (regular)
 - "Acceso inmediato al descargar"
-- Link a Hotmart (placeholder: `HOTMART_LINK`)
+- Botón llama a `handleCTAClick()` → Netlify Function → Checkout Pro de Mercado Pago
 
 ### 8. FOOTER
 - Nombre de la autora
@@ -151,10 +151,16 @@ Inspirada en el ebook — minimalista, suave, profesional pero cálida.
 
 ## Integraciones
 
-### Hotmart (venta)
-- El botón CTA abre el link de Hotmart en nueva pestaña
-- Placeholder en el código: `HOTMART_LINK`
-- Reemplazar con el link real una vez que esté configurado en Hotmart
+### Mercado Pago (venta)
+- Checkout Pro integrado via Netlify Function (`netlify/functions/create-preference.js`)
+- Variables de entorno en Netlify: `MP_ACCESS_TOKEN` y `MP_PRECIO_ARS`
+- Flujo: click en botón → `handleCTAClick()` en `script.js` → POST a `/.netlify/functions/create-preference` → redirect al checkout de MP
+- Back URLs: éxito/pendiente → `/gracias`, fallo → `/`
+- Página de gracias: `gracias.html` con descarga directa del ebook via Google Drive
+
+### Pixel de Meta
+- ID: `961390709715154` — instalado en `index.html` y `gracias.html`
+- Eventos configurados: `PageView`, `InitiateCheckout` (click CTA), `Purchase` (solo si `collection_status=approved` en `/gracias`)
 
 ### Analytics (opcional para lanzamiento)
 - Google Analytics 4 o Plausible

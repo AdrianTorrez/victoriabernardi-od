@@ -69,7 +69,7 @@ exports.handler = async (event) => {
     <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
       <tr>
         <td style="background:#F5EDE1; border-radius:8px; padding:16px 20px;">
-          <strong style="color:#3D2F28;">Odontología desde la panza</strong><br/>
+          <strong style="color:#3D2F28;">¿Cómo no perder tus dientes en el embarazo y cuidar los de tu bebé?</strong><br/>
           <span style="color:#8C6E60; font-size:0.9rem;">Od. Victoria Bernardi · 83 páginas</span><br/><br/>
           <a href="${EBOOK_URL}" style="display:inline-block; padding:10px 24px; background:#8C6E60; color:white; border-radius:6px; font-weight:bold; text-decoration:none; font-family:Arial,sans-serif;">Descargar ebook</a>
         </td>
@@ -111,7 +111,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         from: `Victoria Bernardi Odontóloga <${FROM_EMAIL}>`,
         to: [email],
-        subject: '🦷 Tu material de Odontología desde la panza',
+        subject: '🦷 Tu material — ¿Cómo no perder tus dientes en el embarazo y cuidar los de tu bebé?',
         html,
       }),
     });

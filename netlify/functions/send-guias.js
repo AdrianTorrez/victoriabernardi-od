@@ -81,7 +81,7 @@ exports.handler = async (event) => {
 
     <div style="background:#F5EDE1; border-radius:8px; padding:20px 24px; margin-bottom:32px;">
       <p style="color:#3D2F28; font-weight:700; margin:0 0 8px;">¿Querés profundizar más?</p>
-      <p style="color:#8C6E60; margin:0 0 16px; line-height:1.6;">El ebook <em>Odontología desde la panza</em> cubre todo lo que necesitás saber sobre salud bucal en el embarazo y los primeros años de tu bebé — 71 páginas con información clara y práctica.</p>
+      <p style="color:#8C6E60; margin:0 0 16px; line-height:1.6;">El ebook <em>¿Cómo no perder tus dientes en el embarazo y cuidar los de tu bebé?</em> cubre todo lo que necesitás saber sobre salud bucal en el embarazo y los primeros años de tu bebé — 83 páginas con información clara y práctica.</p>
       <a href="${SITE_URL}" style="display:inline-block; padding:10px 24px; background:#8C6E60; color:white; border-radius:6px; font-weight:bold; text-decoration:none; font-family:Arial,sans-serif;">Ver el ebook</a>
     </div>
 
